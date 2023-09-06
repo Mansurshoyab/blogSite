@@ -36,7 +36,6 @@
             }
         }
 
-
         //INSERT QUERY
 
         public function insert($query){
