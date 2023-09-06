@@ -1,5 +1,7 @@
 <?php 
 
+    include_once '../config/config.php';
+
     class database{
         public $host = HOST;
         public $user = USER;
