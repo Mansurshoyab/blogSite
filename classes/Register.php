@@ -22,18 +22,20 @@
             $password = $this->fr->validation($data['password']);
             $v_token = md5(rand());
 
-            // $e_query = "SELECT * FROM tbl_user WHERE email='$email'";
-            // $check_query = $this->db->select($e_query);
 
-            // if ($check_query > 0) {
-            //     $error = "This Email Is Already Exisit";
-            //     return $error;
-            //     header('location:register.php');
-            // }
 
             if (empty($name) || empty($phone) || empty($email) || empty($password) || empty($v_token)) {
                 $error = "Fild Must not Be Empty";
                 return $error;
+            }else{
+                $e_query = "SELECT * FROM tbl_user WHERE email='$email'";
+                $check_query = $this->db->select($e_query);
+    
+                if ($check_query > 0) {
+                    $error = "This Email Is Already Exisit";
+                    return $error;
+                    header('location:register.php');
+                }
             }
         }
     }
