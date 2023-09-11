@@ -3,9 +3,9 @@
     include_once '../lib/Database.php';
     include_once '../helpers/Format.php';
 
-    include_once'../PHPmailer/PHPMailer.php';
-    include_once'../PHPmailer/SMTP.php';
-    include_once'../PHPmailer/Exception.php';
+    include_once '../PHPmailer/PHPMailer.php';
+    include_once '../PHPmailer/SMTP.php';
+    include_once '../PHPmailer/Exception.php';
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
@@ -31,13 +31,13 @@
                 $mail->SMTPAuth   = true;
 
                 $mail->Host       = 'smtp.example.com';
-                $mail->Username   = 'shoyabmolla420@gmail.com'; 
-                $mail->Password   = 'Molla420'; 
+                $mail->Username   = 'abumansurshoyab@gmail.com'; 
+                $mail->Password   = 'inegzjdwkolpbifc'; 
 
-                $mail->SMTPSecure = 'tls';  
-                $mail->Port       = 587; 
+                $mail->SMTPSecure = 'ssl';  
+                $mail->Port       = 465; 
 
-                $mail->setFrom('shoyabmolla420@gmail.com', $name);
+                $mail->setFrom('abumansurshoyab@gmail.com', $name);
                 $mail->addAddress($email);
 
                 $mail->isHTML(true);   
@@ -49,7 +49,7 @@
                 <a 'http://localhost/PHP-project/pweb/admin/verifi-email.php?token=$v_token'>Click Here</a>
                 ";
 
-                $mail->Body    = $email_template;
+                $mail->Body = $email_template;
                 $mail->send();
             };
 
@@ -73,7 +73,7 @@
                     return $error;
                     header('location:register.php');
                 }else{
-                    $insert_query = "INSERT INTO tbl_user(name, email, phone, password, v_token) value ('$name', '$email', '$phone', '$password', '$v_token')";
+                    $insert_query = "INSERT INTO tbl_user(username, email, phone, password, v_token) value ('$name', '$email', '$phone', '$password', '$v_token')";
 
                     $insert_row = $this->db->insert($insert_query);
 
